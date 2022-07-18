@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang=en dir=ltr>
+
+<head>
+      <meta charset=utf-8>
+      <title>To Do</title>
+    <!-- //  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"> -->
+      <link rel="icon" type="image/png" href="/images/download1.jpg"/>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+      <div class="container">
+            <h1 class="mb-4">Works</h1>
+            <a href="artical/new" class="btn btn-success mb-2">Add Work</a>
+            <% for(let text of articals){%>
+
+                  <div class="card mt-4">
+                        <div class="card-body">
+                              <h3 clas="card-title">
+                                    <%=text.title%>
+                              </h3>
+                              <div class="card-subtitle text-muted mb-2">
+                                    <%=text.createdDate.toLocaleDateString()%>
+                              </div>
+                              <div class="card-text mb-2">
+                                    <%=text.description%>
+                              </div>
+                              <a href="artical/<%= text.slug %>" class="btn btn-primary">Read More</a>
+                              <a href="artical/edit/<%= text.id%>" class="btn btn-info">Edit</a>
+                              <form action="artical/<%=text.id%>?_method=DELETE" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                              </form>
+                        </div>
+
+                  </div>
+                  <% } %>
+      </div>
+</body>
+
+</html>
